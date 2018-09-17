@@ -6,6 +6,8 @@ for Ij = 1:NumberOfOrders
     % Building randomly spaced grid from -1 to 1
     n = 4^Ij;
     h =2/(n-1);
+    nn(Ij)=n;
+    hh(Ij)=h;
     x = linspace(-1,1,n);
     [m,k] = size(x);
         
@@ -31,10 +33,14 @@ for Ij = 1:NumberOfOrders
     %Calculating error with infinity norm
     u_diff = u_2+sin(x');
     
-    Error = norm(u_diff,inf);
+    Error(Ij) = norm(u_diff,inf);
+end
     figure(2)
-    loglog(n,Error,'o')
-    xlabel('resolution n')
+    loglog(hh,Error,'o')
+    xlabel('step size h')
     ylabel('first derivative error')
     hold on
+    loglog(hh,hh.^2,'-')
+    
+    legend('diff2 even grid','h^2')
 end

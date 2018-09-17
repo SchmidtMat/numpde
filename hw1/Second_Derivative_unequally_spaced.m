@@ -13,6 +13,9 @@ for Ij = 1:NumberOfOrders
     end
     x(Counter-1,1)= 1;
     [k,m] = size(x);
+    
+    hh_ave(Ij) = 2/k;
+    nn(Ij)=n;
         
     u = zeros(k,1);
     u_2 = zeros(k,1);
@@ -37,11 +40,16 @@ for Ij = 1:NumberOfOrders
     %Calculating error with infinity norm
     u_diff = u_2+sin(x);
     
-    Error = norm(u_diff,inf);
+    Error(Ij) = norm(u_diff,inf);
+end
     figure(2)
-    loglog(k,Error,'o')
-    xlabel('resolution k')
+    loglog(hh_ave,Error,'o')
+    xlabel('step size h')
     ylabel('first derivative error')
     hold on
-end
+    loglog(hh_ave,hh_ave.^2,'-')
+    hold on
+    loglog(hh_ave,hh_ave,'-')
+    
+    legend('diff1 even grid','h-ave^2','h-ave')
 end

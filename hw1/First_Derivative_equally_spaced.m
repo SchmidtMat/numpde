@@ -6,6 +6,8 @@ for Ij = 1:NumberOfOrders
     % Building equally spaced grid
     n = 4^Ij;
     h =2/(n-1);
+    nn(Ij)=n;
+    hh(Ij)=h;
     x = linspace(-1,1,n);
     [m,k] = size(x);
     
@@ -30,11 +32,14 @@ for Ij = 1:NumberOfOrders
     
     u_diff = u_1-cos(x');
     
-    Error = norm(u_diff,inf);
+    Error(Ij) = norm(u_diff,inf);
+end
     figure(2)
-    loglog(n,Error,'o')
-    xlabel('resolution n')
+    loglog(hh,Error,'o')
+    xlabel('step size h')
     ylabel('first derivative error')
     hold on
-end
+    loglog(hh,hh,'-')
+    
+    legend('diff1 even grid','h')
 end

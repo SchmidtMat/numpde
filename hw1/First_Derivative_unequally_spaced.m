@@ -14,6 +14,9 @@ for Ij = 1:NumberOfOrders
     x(Counter-1,1)= 1;
     [k,m] = size(x);
     
+    hh_ave(Ij) = 2/k;
+    nn(Ij)=n;
+    
     % Determine step size for node i
     for i = 1 : k-1
         h(i,1) =x(i+1,1)-x(i,1);
@@ -41,11 +44,14 @@ for Ij = 1:NumberOfOrders
     
     u_diff = u_1-cos(x);
     
-    Error = norm(u_diff,inf);
+    Error(Ij) = norm(u_diff,inf);
+end
     figure(2)
-    loglog(n,Error,'o')
-    xlabel('resolution k')
+    loglog(hh_ave,Error,'o')
+    xlabel('step size h')
     ylabel('first derivative error')
     hold on
-end
+    loglog(hh_ave,hh_ave,'-')
+    
+    legend('diff1 even grid','h-ave')
 end
