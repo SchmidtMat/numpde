@@ -24,5 +24,5 @@ However, the use for the edges does not allow this accuracy. To determine the ac
 To run this example the file Second_Derivative_unequally_spaced can be used.
 
 
-Use test solutions to determine the order of accuracy of your methods for evenly and non-evenly spaced points. Which norm did you use?
+### Use test solutions to determine the order of accuracy of your methods for evenly and non-evenly spaced points. Which norm did you use?
 An infinity norm is used. The accuracy is mentioned in the paragraphs above.
