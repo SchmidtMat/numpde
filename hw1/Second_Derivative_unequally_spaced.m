@@ -51,5 +51,5 @@ end
     hold on
     loglog(hh_ave,hh_ave,'-')
     
-    legend('diff1 even grid','h-ave^2','h-ave')
+    legend('diff1 even grid','h-ave^2','h-ave3')
 end
