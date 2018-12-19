@@ -2569,8 +2569,6 @@ namespace moris
             // get order
             uint tOrder = this->get_order();
 
-            std::cout<<tOrder<<" Order------------------------------------------------"<<std::endl;
-
             uint tNumberOfChildrenPerDirection = tOrder + 2;
 
             // allocate matrix
